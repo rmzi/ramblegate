@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900px" height="720px" viewBox="0 0 900 720" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>BOARD5</title>
+    <defs>
+        <filter x="-63.6%" y="-42.8%" width="227.1%" height="185.6%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="11.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.597298527   0 0 0 0 0.819618624   0 0 0 0 0.860167572  0 0 0 1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-397.9%" y="-267.8%" width="895.7%" height="635.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="110" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="17.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="BOARD5" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="SCENE">
+            <g id="BACKGROUND">
+                <rect id="Rectangle-Copy-2" stroke="#FFFFFF" transform="translate(450.000000, 360.000000) scale(-1, 1) translate(-450.000000, -360.000000) " x="0.5" y="0.5" width="899" height="719"></rect>
+                <rect id="Rectangle-Copy-3" fill="#C6C6C6" transform="translate(450.000000, 600.000000) scale(-1, 1) translate(-450.000000, -600.000000) " x="0" y="480" width="900" height="240"></rect>
+                <polygon id="Path-8" fill="#EFEFEF" points="338.232025 529.076999 273 720 628 720 561.872061 528.786683"></polygon>
+                <polygon id="Rectangle-Copy-6" fill="#EFEFEF" transform="translate(455.000000, 595.000000) scale(-1, 1) translate(-455.000000, -595.000000) " points="200 500 720 500 830 690 80 690"></polygon>
+                <rect id="Rectangle-Copy-4" fill="#E7B844" transform="translate(450.000000, 240.000000) scale(-1, -1) translate(-450.000000, -240.000000) " x="0" y="0" width="900" height="480"></rect>
+                <polygon id="Path-16" fill="#B18D35" points="170 480 170 0 0 0 0 720"></polygon>
+                <polygon id="Path-16-Copy" fill="#B18D35" transform="translate(815.000000, 360.000000) scale(-1, 1) translate(-815.000000, -360.000000) " points="900 480 900 0 730 0 730 720"></polygon>
+            </g>
+            <g id="FOREGROUND" transform="translate(400.000000, 424.000000)">
+                <g id="ramble">
+                    <g id="shine" filter="url(#filter-1)">
+                        <polygon id="Triangle-Copy" fill="#116790" transform="translate(52.199994, 32.303520) scale(-1, 1) translate(-52.199994, -32.303520) " points="69.5999924 5.56354901e-14 69.5999924 64.6070405 34.7999962 54.1670417"></polygon>
+                        <polygon id="Triangle-Copy-3" fill="#0C2530" points="34.7999962 103.179952 34.7999962 64.6070405 0 54.1670417"></polygon>
+                        <polygon id="Triangle-Copy-2" fill="#064761" transform="translate(52.199994, 78.673497) scale(-1, 1) translate(-52.199994, -78.673497) " points="69.5999924 103.179952 69.5999924 64.6070405 34.7999962 54.1670417"></polygon>
+                        <polygon id="Triangle" fill="#007A80" points="34.7999962 5.56354901e-14 34.7999962 64.6070405 0 54.1670417"></polygon>
+                    </g>
+                    <g id="gem" filter="url(#filter-2)">
+                        <polygon id="Triangle-Copy" fill="#116790" transform="translate(52.199994, 32.303520) scale(-1, 1) translate(-52.199994, -32.303520) " points="69.5999924 5.56354901e-14 69.5999924 64.6070405 34.7999962 54.1670417"></polygon>
+                        <polygon id="Triangle-Copy-3" fill="#0C2530" points="34.7999962 103.179952 34.7999962 64.6070405 0 54.1670417"></polygon>
+                        <polygon id="Triangle-Copy-2" fill="#064761" transform="translate(52.199994, 78.673497) scale(-1, 1) translate(-52.199994, -78.673497) " points="69.5999924 103.179952 69.5999924 64.6070405 34.7999962 54.1670417"></polygon>
+                        <polygon id="Triangle" fill="#007A80" points="34.7999962 5.56354901e-14 34.7999962 64.6070405 0 54.1670417"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

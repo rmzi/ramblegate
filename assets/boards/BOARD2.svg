@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900px" height="720px" viewBox="0 0 900 720" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>BOARD2</title>
+    <g id="BOARD2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="SCENE">
+            <g id="BACKGROUND">
+                <rect id="Rectangle-Copy-2" stroke="#FFFFFF" transform="translate(450.000000, 360.000000) scale(-1, 1) translate(-450.000000, -360.000000) " x="0.5" y="0.5" width="899" height="719"></rect>
+                <rect id="Rectangle-Copy-3" fill="#C6C6C6" transform="translate(450.000000, 600.000000) scale(-1, 1) translate(-450.000000, -600.000000) " x="0" y="480" width="900" height="240"></rect>
+                <polygon id="Path-8" fill="#EFEFEF" points="355 480 273 720 628 720 545 480"></polygon>
+                <polygon id="Path-17" fill="#EFEFEF" points="61 634 839 634 775 544 125 544"></polygon>
+                <rect id="Rectangle-Copy-4" fill="#E74444" transform="translate(450.000000, 240.000000) scale(-1, -1) translate(-450.000000, -240.000000) " x="0" y="0" width="900" height="480"></rect>
+            </g>
+            <polygon id="Path-16" fill="#C92F2F" points="170 480 170 0 0 0 0 720"></polygon>
+            <polygon id="Path-16-Copy" fill="#C92F2F" transform="translate(815.000000, 360.000000) scale(-1, 1) translate(-815.000000, -360.000000) " points="900 480 900 0 730 0 730 720"></polygon>
+            <g id="FOREGROUND" transform="translate(61.000000, 246.000000)" fill="#000000">
+                <path d="M384,0 L394,0 C443.705627,-9.13077564e-15 484,40.2943725 484,90 L484,234 L484,234 L294,234 L294,90 C294,40.2943725 334.294373,9.13077564e-15 384,0 Z" id="Rectangle"></path>
+                <path d="M32,58.0331126 C41.7866912,51.9063036 54.687132,54.8732244 60.813941,64.6599156 C62.8958993,67.9855429 64,71.8299216 64,75.7534846 L64,297.933775 L64,297.933775 L0,388 L0,115.81971 C-2.87651386e-15,92.3311916 12.0910409,70.4968132 32,58.0331126 Z" id="door_01"></path>
+                <path d="M746,58.0331126 C755.786691,51.9063036 768.687132,54.8732244 774.813941,64.6599156 C776.895899,67.9855429 778,71.8299216 778,75.7534846 L778,297.933775 L778,297.933775 L714,388 L714,115.81971 C714,92.3311916 726.091041,70.4968132 746,58.0331126 Z" id="Rectangle-Copy-5" transform="translate(746.000000, 213.000000) scale(-1, 1) translate(-746.000000, -213.000000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

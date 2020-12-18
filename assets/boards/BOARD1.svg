@@ -1,0 +1,97 @@
+<svg width="1280px" height="720px" viewBox="0 0 1280 720" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>BOARD1</title>
+    <g id="BOARD1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="SCENE">
+            <g id="BACKGROUND">
+                <rect id="Rectangle-Copy-2" stroke="#FFFFFF" transform="translate(450.000000, 360.000000) scale(-1, 1) translate(-450.000000, -360.000000) " x="0.5" y="0.5" width="899" height="719"></rect>
+                <rect id="Rectangle-Copy-3" fill="#C6C6C6" transform="translate(450.000000, 600.000000) scale(-1, 1) translate(-450.000000, -600.000000) " x="0" y="480" width="900" height="240"></rect>
+                <rect id="Rectangle-Copy-4" fill="#656565" transform="translate(450.000000, 240.000000) scale(-1, -1) translate(-450.000000, -240.000000) " x="0" y="0" width="900" height="480"></rect>
+                <polygon id="Path-8" fill="#EFEFEF" points="321 480 263 720 638 720 579 480"></polygon>
+            </g>
+            <g id="FOREGROUND" transform="translate(321.000000, 176.000000)" fill="#000000">
+                <path d="M90,0 L168,0 C217.705627,-9.13077564e-15 258,40.2943725 258,90 L258,304 L258,304 L0,304 L0,90 C-6.08718376e-15,40.2943725 40.2943725,9.13077564e-15 90,0 Z" id="door_1"></path>
+            </g>
+        </g>
+        <g id="SIDEBAR" transform="translate(900.000000, 0.000000)">
+            <rect id="frame_bg" fill="#B0B0B0" x="0" y="0" width="380" height="720"></rect>
+            <g id="inventory" transform="translate(24.000000, 106.000000)">
+                <g id="frame">
+                    <rect id="bg" fill="#FFFFFF" x="0" y="0" width="330" height="280" rx="10"></rect>
+                    <path d="M10,0 L320,0 C325.522847,-1.01453063e-15 330,4.4771525 330,10 L330,34 L330,34 L0,34 L0,10 C-6.76353751e-16,4.4771525 4.4771525,4.56724431e-15 10,0 Z" id="header" fill="#858585"></path>
+                    <text id="Inventory" font-family="Inconsolata-Regular_Expanded-Bold, Inconsolata" font-size="20.091" font-style="expanded" font-weight="bold" fill="#FFFFFF">
+                        <tspan x="20" y="23.5">Inventory</tspan>
+                    </text>
+                </g>
+                <g id="slots" transform="translate(36.000000, 183.000000)" fill="#B0B0B0">
+                    <rect id="slot_four" x="88" y="0" width="35" height="35" rx="4"></rect>
+                    <rect id="slot_four-copy" x="220" y="0" width="35" height="35" rx="4"></rect>
+                    <rect id="slot_five" x="44" y="0" width="35" height="35" rx="4"></rect>
+                    <rect id="slot_five-copy" x="176" y="0" width="35" height="35" rx="4"></rect>
+                    <rect id="slot_six" x="0" y="0" width="35" height="35" rx="4"></rect>
+                    <rect id="slot_six-copy" x="132" y="0" width="35" height="35" rx="4"></rect>
+                    <rect id="slot_seven" x="88" y="44" width="35" height="35" rx="4"></rect>
+                    <rect id="slot_seven-copy" x="220" y="44" width="35" height="35" rx="4"></rect>
+                    <rect id="slot_eight" x="44" y="44" width="35" height="35" rx="4"></rect>
+                    <rect id="slot_eight-copy" x="176" y="44" width="35" height="35" rx="4"></rect>
+                    <rect id="slot_nine" x="0" y="44" width="35" height="35" rx="4"></rect>
+                    <rect id="slot_nine-copy" x="132" y="44" width="35" height="35" rx="4"></rect>
+                </g>
+                <g id="selected_item" transform="translate(34.000000, 46.000000)" fill="#B0B0B0">
+                    <rect id="selected" x="0" y="0" width="123" height="123" rx="4"></rect>
+                </g>
+                <text id="description_label" font-family="Inconsolata-Regular_Expanded-Bold, Inconsolata" font-size="12.091" font-style="expanded" font-weight="bold" fill="#B0B0B0">
+                    <tspan x="169" y="102">DESCRIPTION:</tspan>
+                </text>
+                <text id="name_label" font-family="Inconsolata-Regular_Expanded-Bold, Inconsolata" font-size="12.091" font-style="expanded" font-weight="bold" fill="#B0B0B0">
+                    <tspan x="169" y="61">NAME: </tspan>
+                </text>
+                <text id="description_label-copy" font-family="Inconsolata-Regular_Expanded-Bold, Inconsolata" font-size="12.091" font-style="expanded" font-weight="bold" fill="#B0B0B0">
+                    <tspan x="169" y="114">—</tspan>
+                </text>
+                <text id="name_label-copy" font-family="Inconsolata-Regular_Expanded-Bold, Inconsolata" font-size="12.091" font-style="expanded" font-weight="bold" fill="#B0B0B0">
+                    <tspan x="169" y="73">—</tspan>
+                </text>
+            </g>
+            <g id="map_controls" transform="translate(24.000000, 412.000000)">
+                <g id="frame">
+                    <rect id="bg" fill="#FFFFFF" x="0" y="0" width="330" height="280" rx="10"></rect>
+                    <path d="M10,0 L320,0 C325.522847,-1.01453063e-15 330,4.4771525 330,10 L330,34 L330,34 L0,34 L0,10 C-6.76353751e-16,4.4771525 4.4771525,4.56724431e-15 10,0 Z" id="header" fill="#858585"></path>
+                    <text id="Map" font-family="Inconsolata-Regular_Expanded-Bold, Inconsolata" font-size="20.091" font-style="expanded" font-weight="bold" fill="#FFFFFF">
+                        <tspan x="20" y="23.5">Map</tspan>
+                    </text>
+                </g>
+                <g id="controls" transform="translate(24.000000, 57.000000)" fill="#858585">
+                    <polygon id="north" points="139 0 153 21 125 21"></polygon>
+                    <polygon id="south" transform="translate(139.000000, 191.500000) scale(1, -1) translate(-139.000000, -191.500000) " points="139 181 153 202 125 202"></polygon>
+                    <polygon id="west" transform="translate(11.000000, 101.000000) rotate(-90.000000) translate(-11.000000, -101.000000) " points="11 90 24 112 -2 112"></polygon>
+                    <polygon id="east" transform="translate(267.000000, 101.000000) scale(1, -1) rotate(90.000000) translate(-267.000000, -101.000000) " points="267 90 280 112 254 112"></polygon>
+                </g>
+            </g>
+            <g id="logo" transform="translate(25.000000, 21.500000)">
+                <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="330" height="60" rx="30"></rect>
+                <rect id="Rectangle-Copy-6" stroke="#13B2CF" stroke-width="4.91803279" x="9.95901639" y="8.45901639" width="310.081967" height="43.0819672" rx="21.5409836"></rect>
+                <text id="RAMBLEGATE" font-family="DINAlternate-Bold, DIN Alternate" font-size="25.5675823" font-weight="bold" fill="#13B2CF">
+                    <tspan x="27.7989198" y="39.2098357">RAMBLEGATE</tspan>
+                </text>
+                <text id="CLASSIQUE" font-family="BlazingItalic, Blazing" font-size="23" font-style="italic" font-weight="normal" fill="#D327AE">
+                    <tspan x="186.477702" y="37.8360656">CLASSIQUE</tspan>
+                </text>
+                <rect id="Rectangle-Copy" fill="#FFFFFF" style="mix-blend-mode: color;" x="0" y="0" width="330" height="60" rx="30"></rect>
+            </g>
+        </g>
+        <g id="PROMPT" transform="translate(38.000000, 511.000000)">
+            <g id="frame" transform="translate(419.500000, 90.000000) scale(1, -1) translate(-419.500000, -90.000000) ">
+                <rect id="bg" fill="#FFFFFF" x="0" y="0" width="839" height="180" rx="10"></rect>
+                <path d="M10,3.55271368e-15 L829,3.55271368e-15 C834.522847,2.53818305e-15 839,4.4771525 839,10 L839,34 L839,34 L0,34 L0,10 C-6.76353751e-16,4.4771525 4.4771525,8.11995798e-15 10,3.55271368e-15 Z" id="header" fill="#858585"></path>
+            </g>
+            <g id="prompt_metadata" transform="translate(19.000000, 18.000000)" font-family="Inconsolata-Regular_Expanded-Bold, Inconsolata" font-style="expanded" font-weight="bold">
+                <text id="prompt_title" font-size="20.091" fill="#FFFFFF">
+                    <tspan x="789.945277" y="151">—</tspan>
+                </text>
+                <text id="prompt_text" font-size="26.091" fill="#858585">
+                    <tspan x="0" y="22">—</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
