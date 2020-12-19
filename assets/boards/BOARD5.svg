@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="900px" height="720px" viewBox="0 0 900 720" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="100%" height="100%" viewBox="0 0 1280 720" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>BOARD5</title>
     <defs>
         <filter x="-63.6%" y="-42.8%" width="227.1%" height="185.6%" filterUnits="objectBoundingBox" id="filter-1">
@@ -31,8 +31,22 @@
                 <rect id="Rectangle-Copy-4" fill="#E7B844" transform="translate(450.000000, 240.000000) scale(-1, -1) translate(-450.000000, -240.000000) " x="0" y="0" width="900" height="480"></rect>
                 <polygon id="Path-16" fill="#B18D35" points="170 480 170 0 0 0 0 720"></polygon>
                 <polygon id="Path-16-Copy" fill="#B18D35" transform="translate(815.000000, 360.000000) scale(-1, 1) translate(-815.000000, -360.000000) " points="900 480 900 0 730 0 730 720"></polygon>
+                <rect id="Rectangle" fill="#FFFFFF" x="271" y="90" width="369" height="252"></rect>
+                <polygon id="Rectangle-Copy-5" fill="#FFFFFF" transform="translate(855.000000, 300.000000) scale(-1, 1) translate(-855.000000, -300.000000) " points="810 176 900 122 900 394 810 478"></polygon>
+                <polygon id="Rectangle-Copy-7" fill="#FFFFFF" transform="translate(855.000000, 300.000000) scale(-1, 1) translate(-855.000000, -300.000000) " points="810 176 900 122 900 394 810 478"></polygon>
+                <polygon id="Rectangle-Copy-8" fill="#FFFFFF" points="0 176 90 122 90 394 0 478"></polygon>
+                <polygon id="Rectangle-Copy-9" fill="#95F3ED" points="0 176 90 122 90 240 45 205 0 247"></polygon>
+                <polygon id="Rectangle-Copy-10" fill="#445D3E" points="0 478 90 394 90 240 45 205 0 247"></polygon>
+                <polygon id="Rectangle-Copy-12" fill="#95F3ED" points="0 176 90 122 90 240 45 205 0 247"></polygon>
+                <polygon id="Rectangle-Copy-11" fill="#445D3E" points="0 478 90 394 90 240 45 205 0 247"></polygon>
+                <polygon id="Path-18" fill="#445D3E" points="271 216 355 158 442 229 537 158 640 256 640 342 271 342"></polygon>
+                <polygon id="Path-18-Copy" fill="#95F3ED" points="271 216 355 158 442 229 537 158 640 256 640 90 271 90"></polygon>
+                <g id="windows" transform="translate(855.000000, 300.000000) scale(-1, 1) translate(-855.000000, -300.000000) translate(810.000000, 122.000000)">
+                    <polygon id="Rectangle-Copy-13" fill="#95F3ED" points="0 54 90 -1.20795041e-12 90 118 45 83 0 125"></polygon>
+                    <polygon id="Rectangle-Copy-14" fill="#445D3E" points="0 356 90 272 90 118 45 83 0 125"></polygon>
+                </g>
             </g>
-            <g id="FOREGROUND" transform="translate(400.000000, 424.000000)">
+            <g id="FOREGROUND" transform="translate(400.000000, 434.000000)">
                 <g id="ramble">
                     <g id="shine" filter="url(#filter-1)">
                         <polygon id="Triangle-Copy" fill="#116790" transform="translate(52.199994, 32.303520) scale(-1, 1) translate(-52.199994, -32.303520) " points="69.5999924 5.56354901e-14 69.5999924 64.6070405 34.7999962 54.1670417"></polygon>
