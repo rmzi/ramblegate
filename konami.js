@@ -13,8 +13,14 @@ var keyHandler = function (event) {
 	if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
         current = 0;
         for(i = 1; i <= 10; i++){
-            SVG("#button" + i.toString()).fill({color: '#000000'})
-        }
+            SVG("#button" + i.toString()).fill({color: '#ff0000'})
+		}
+		setTimeout(() => { 
+			for(i = 1; i <= 10; i++){
+            	SVG("#button" + i.toString()).fill({color: '#000000'})
+			}  
+		}, 500);
+		
 		return;
 	}
 

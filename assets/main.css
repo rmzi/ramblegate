@@ -9,13 +9,18 @@
 .hidden {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s 2s, opacity 2s linear;
+  transition: visibility 0s 2s, opacity 1s linear;
 }
 
 .visible {
   visibility: visible;
   opacity: 1;
-  transition: opacity 2s linear;
+  transition: opacity 1s linear;
+}
+
+.flash {
+  fill: red;
+  transition: 2s linear;
 }
 
 #home {
