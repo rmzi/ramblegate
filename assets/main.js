@@ -6,6 +6,8 @@ var overlay = draw.find('.overlay')
 var title = draw.find('.title')
 var legal = draw.find('.legal')
 
+var GAME_STATE = 'HOME'
+
 board.hide()
 overlay.hide()
 title.hide()
@@ -44,62 +46,113 @@ const track = audioContext.createMediaElementSource(audioElement);
 var pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 var current = 0;
 
+var fadeInLegal = function() {
+  var legalAnimator = legal.show().animate({
+    duration: 500,
+    when: 'now',
+    swing: 'true',
+    times: 1
+  }).attr({opacity: 1}).delay(1000);
+
+  legalAnimator.after(fadeOutLegal);
+}
+
+var fadeOutLegal = function() {
+  legal.animate({
+    duration: 500,
+    when: 'now',
+    swing: 'true',
+    times: 1
+  }).attr({opacity: 0})
+}
+
 // KEYBOARD INPUT
 /////////////////////////////////////////////////
 var keyHandler = function (event) {
 
   // If the enter key is pressed on the Title screen, start the game
-  if (event.key == "Enter") {
-    home.hide()
-  }
 
-	// If the key isn't in the pattern, or isn't the current key in the pattern, reset
-	if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
+
+  if(GAME_STATE === 'HOME'){
+        // If the key isn't in the pattern, or isn't the current key in the pattern, reset
+      if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
         current = 0;
         for(i = 1; i <= 10; i++){
             SVG("#button" + i.toString()).fill({color: '#ff0000'})
-		}
-		setTimeout(() => { 
-			for(i = 1; i <= 10; i++){
-            	SVG("#button" + i.toString()).fill({color: '#000000'})
-			}  
-		}, 500);
-		
-		return;
-	}
+    }
+    setTimeout(() => { 
+      for(i = 1; i <= 10; i++){
+              SVG("#button" + i.toString()).fill({color: '#000000'})
+      }  
+    }, 500);
 
-	// Update how much of the pattern is complete
-	current++;
+    return;
+    }
+
+    // Update how much of the pattern is complete
+    current++;
 
     if(current <= pattern.length){
         SVG("#button" + current.toString()).fill({color: '#f06'})
     }
 
-	// If complete, move to the next screen
-	if (pattern.length === current) {
+    // If complete, move to the next screen
+    if (pattern.length === current) {
 
     debug("Successfully entered the Konami Code. (If you know) You know.")
 
-		current = 0;
-    
+    current = 0;
+    // Changing game state to 'TITLE'
+    GAME_STATE = 'TITLE'
+
     // Hide the homepage and transition to the board
-    home.animate({
+    var homeAnimator = home.animate({
       duration: 1000,
-      delay: 1000,
       when: 'now',
       swing: 'true',
       times: 1
     }).attr({opacity: 0});
 
-    board.show().animate({
-      duration: 2000,
-      delay: 2000,
-      when: 'after',
-      swing: 'true',
-      times: 1
-    }).attr({opacity: 1});
-	}
+    homeAnimator.after(fadeInLegal);
+  }
+}
+
+    // .animate({
+    //   duration: 500,
+    //   delay: 2000,
+    //   when: 'after',
+    //   swing: 'true',
+    //   times: 1
+    // }).attr({opacity: 0}).delay(1000);
+
+    // title.show().animate({
+    //   duration: 1000,
+    //   delay: 4000,
+    //   when: 'after',
+    //   swing: 'true',
+    //   times: 1
+    // }).attr({opacity: 1}).delay(1000)
+    // }
+  
+
+  if(GAME_STATE === 'TITLE') {
+    if (event.key == "Enter") {
+      home.hide()
+      legal.hide()
+      title.hide()
+  
+      board.show().animate({
+        duration: 1000,
+        delay: 0000,
+        when: 'now',
+        swing: 'true',
+        times: 1
+      }).attr({opacity: 1});
+    }
+  }
 };
+
+
 
 // Listen for keydown events
 document.addEventListener('keydown', keyHandler, false);
