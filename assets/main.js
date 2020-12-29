@@ -46,6 +46,11 @@ var homepage = document.getElementsByClassName("home")[0];
 /////////////////////////////////////////////////
 var keyHandler = function (event) {
 
+  // If the enter key is pressed on the Title screen, start the game
+  if (event.key == "Enter") {
+    home.hide()
+  }
+
 	// If the key isn't in the pattern, or isn't the current key in the pattern, reset
 	if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
         current = 0;
@@ -76,8 +81,21 @@ var keyHandler = function (event) {
 		current = 0;
     
     // Hide the homepage and transition to the board
-    home.hide()
-    board.show()
+    home.animate({
+      duration: 1000,
+      delay: 1000,
+      when: 'now',
+      swing: 'true',
+      times: 1
+    }).attr({opacity: 0});
+
+    board.show().animate({
+      duration: 2000,
+      delay: 2000,
+      when: 'after',
+      swing: 'true',
+      times: 1
+    }).attr({opacity: 1});
 	}
 };
 
@@ -87,7 +105,6 @@ document.addEventListener('keydown', keyHandler, false);
 // INTIAL LOAD
 /////////////////////////////////////////////////
 let init = function(){
-
   debug("Running init...")
 
   var initial_request = new XMLHttpRequest();
