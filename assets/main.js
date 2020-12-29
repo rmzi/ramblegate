@@ -1,12 +1,15 @@
 var draw = SVG('.svg_container')
+
 var board = draw.find('.board')
 var home = draw.find('.home')
 var overlay = draw.find('.overlay')
 var title = draw.find('.title')
+var legal = draw.find('.legal')
 
 board.hide()
 overlay.hide()
 title.hide()
+legal.hide()
 
 var door1;
 var scene;
@@ -40,7 +43,6 @@ const track = audioContext.createMediaElementSource(audioElement);
 /////////////////////////////////////////////////
 var pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 var current = 0;
-var homepage = document.getElementsByClassName("home")[0];
 
 // KEYBOARD INPUT
 /////////////////////////////////////////////////
