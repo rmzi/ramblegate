@@ -1,21 +1,31 @@
 var draw = SVG('.svg_container')
 
+// SVG Selectors for all layers
 var board = draw.find('.board')
 var home = draw.find('.home')
 var overlay = draw.find('.overlay')
 var title = draw.find('.title')
 var legal = draw.find('.legal')
+var company = draw.find('.company')
 
 var GAME_STATE = 'HOME'
 
+// Hide everything except `home`
 board.hide()
 overlay.hide()
 title.hide()
 legal.hide()
+company.hide()
 
-var door1;
+// Cardinal Directions (for minimap)
+var north;
+var south;
+var east;
+var west;
+
+var current_room;
 var scene;
-var real_scene;
+
 var DEBUG_FLAG = true;
 
 // HELPER FUNCTIONS
@@ -46,24 +56,70 @@ const track = audioContext.createMediaElementSource(audioElement);
 var pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 var current = 0;
 
-var fadeInLegal = function() {
-  var legalAnimator = legal.show().animate({
-    duration: 500,
+var fadeInCompany = function() {
+  var companyAnimator = company.show().animate({
+    duration: 1000,
     when: 'now',
     swing: 'true',
     times: 1
-  }).attr({opacity: 1}).delay(1000);
+  }).attr({opacity: 1});
+
+  companyAnimator.after(fadeOutCompany);
+}
+
+var fadeOutCompany = function() {
+  var companyAnimator = company.animate({
+    duration: 1000,
+    delay: 1000,
+    when: 'now',
+    swing: 'true',
+    times: 1
+  }).attr({opacity: 0})
+
+  companyAnimator.after(fadeInLegal)
+}
+
+var fadeInLegal = function() {
+  var legalAnimator = legal.show().animate({
+    duration: 1000,
+    when: 'now',
+    swing: 'true',
+    times: 1
+  }).attr({opacity: 1});
 
   legalAnimator.after(fadeOutLegal);
 }
 
 var fadeOutLegal = function() {
-  legal.animate({
-    duration: 500,
+  var legalAnimator = legal.animate({
+    duration: 1000,
+    delay: 1000,
     when: 'now',
     swing: 'true',
     times: 1
   }).attr({opacity: 0})
+
+  legalAnimator.after(fadeInTitle)
+}
+
+var fadeInTitle = function() {
+  var titleAnimator = title.show().animate({
+    duration: 1000,
+    when: 'now',
+    swing: 'true',
+    times: 1
+  }).attr({opacity: 1});
+
+  // Connect <audio> to Web Audio API
+  track.connect(audioContext.destination);
+
+  // check if context is in suspended state (autoplay policy)
+  if (audioContext.state === 'suspended') {
+    audioContext.resume();
+  }
+
+  // Start intro music
+  audioElement.play();
 }
 
 // KEYBOARD INPUT
@@ -113,34 +169,17 @@ var keyHandler = function (event) {
       times: 1
     }).attr({opacity: 0});
 
-    homeAnimator.after(fadeInLegal);
+    homeAnimator.after(fadeInCompany);
+    }
   }
-}
-
-    // .animate({
-    //   duration: 500,
-    //   delay: 2000,
-    //   when: 'after',
-    //   swing: 'true',
-    //   times: 1
-    // }).attr({opacity: 0}).delay(1000);
-
-    // title.show().animate({
-    //   duration: 1000,
-    //   delay: 4000,
-    //   when: 'after',
-    //   swing: 'true',
-    //   times: 1
-    // }).attr({opacity: 1}).delay(1000)
-    // }
-  
 
   if(GAME_STATE === 'TITLE') {
     if (event.key == "Enter") {
+      // Hide everything (except Board and Overlay (which are already hidden))
       home.hide()
       legal.hide()
       title.hide()
-  
+
       board.show().animate({
         duration: 1000,
         delay: 0000,
@@ -151,8 +190,6 @@ var keyHandler = function (event) {
     }
   }
 };
-
-
 
 // Listen for keydown events
 document.addEventListener('keydown', keyHandler, false);
@@ -174,7 +211,7 @@ let init = function(){
               debug(initial_request.responseText);
               board.svg(initial_request.responseText)
               door1 = board.find("#north")
-              door1.on('click', goWest);
+              door1.on('click', room1_goNorth);
         } else {
           console.log('Error: ' + initial_request.status); // An error occurred during the request.
         }
@@ -186,7 +223,7 @@ let init = function(){
 /////////////////////////////////////////////////
 
 // rename to room1_goWest
-let goWest = function() {
+let room1_goNorth = function() {
     // Remove existing scene from board
     board.find("#SCENE").remove()
 
@@ -205,8 +242,8 @@ let goWest = function() {
             debug(new_request.responseText);
                   
             scene = board.svg(new_request.responseText);
-            door1 = board.find("#north")
-            door1.on('click', goWest);
+            north = board.find("#north")
+            north.on('click', room1_goNorth);
           } else {
             console.log('Error: ' + new_request.status); // An error occurred during the request.
           }
