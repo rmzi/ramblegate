@@ -1,3 +1,4 @@
+// Attach SVG JS to DOM SVG Canvas
 var draw = SVG('.svg_container')
 
 // SVG Selectors for all layers
@@ -8,6 +9,7 @@ var title = draw.find('.title')
 var legal = draw.find('.legal')
 var company = draw.find('.company')
 
+// Initialize Game State to `home`
 var GAME_STATE = 'HOME'
 
 // Hide everything except `home`
@@ -18,11 +20,12 @@ legal.hide()
 company.hide()
 
 // Cardinal Directions (for minimap)
-var north;
-var south;
-var east;
-var west;
+var north = board.find('#north');
+var south = board.find('#south');
+var east = board.find('#east');
+var west = board.find('#west');
 
+// Manage current room
 var current_room;
 var scene;
 
@@ -37,6 +40,29 @@ let debug = function(text){
   }
 }
 
+let fetchScene = function(scene_num) {
+  var request = new XMLHttpRequest();
+  request.open('GET', 'assets/boards/BOARD' + scene_num + '.svg');
+  request.send(null);
+
+  request.onreadystatechange = function () {
+    var DONE = 4; // readyState 4 means the request is done.
+    var OK = 200; // status 200 is a successful return.
+    if (request.readyState === DONE) {
+      if (request.status === OK) {
+            // Debug: dump scene payload
+            debug(request.responseText);
+            
+            // Draw scene to the board
+            board.svg(request.responseText)
+      } else {
+        // An error occurred during the request.
+        console.log('Error: ' + request.status); 
+      }
+    }
+  };
+}
+
 // WEB AUDIO API
 /////////////////////////////////////////////////
 
@@ -47,6 +73,7 @@ const audioContext = new AudioContext();
 
 // get the audio element
 const audioElement = document.querySelector('audio');
+audioElement.loop = true;
 
 // pass it into the audio context
 const track = audioContext.createMediaElementSource(audioElement);
@@ -56,7 +83,11 @@ const track = audioContext.createMediaElementSource(audioElement);
 var pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 var current = 0;
 
+// OPENING SEQUENCE
+/////////////////////////////////////////////////
 var fadeInCompany = function() {
+  home.hide();
+
   var companyAnimator = company.show().animate({
     duration: 1000,
     when: 'now',
@@ -80,8 +111,11 @@ var fadeOutCompany = function() {
 }
 
 var fadeInLegal = function() {
+  company.hide()
+
   var legalAnimator = legal.show().animate({
     duration: 1000,
+    delay: 1000,
     when: 'now',
     swing: 'true',
     times: 1
@@ -103,6 +137,8 @@ var fadeOutLegal = function() {
 }
 
 var fadeInTitle = function() {
+  legal.hide();
+
   var titleAnimator = title.show().animate({
     duration: 1000,
     when: 'now',
@@ -126,9 +162,7 @@ var fadeInTitle = function() {
 /////////////////////////////////////////////////
 var keyHandler = function (event) {
 
-  // If the enter key is pressed on the Title screen, start the game
-
-
+  // HOME MODE
   if(GAME_STATE === 'HOME'){
         // If the key isn't in the pattern, or isn't the current key in the pattern, reset
       if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
@@ -173,20 +207,42 @@ var keyHandler = function (event) {
     }
   }
 
+  // TITLE MODE
   if(GAME_STATE === 'TITLE') {
     if (event.key == "Enter") {
-      // Hide everything (except Board and Overlay (which are already hidden))
-      home.hide()
-      legal.hide()
       title.hide()
+
+      // Change GAME_STATE to board
+      GAME_STATE = 'BOARD'
 
       board.show().animate({
         duration: 1000,
-        delay: 0000,
+        delay: 100,
         when: 'now',
         swing: 'true',
         times: 1
       }).attr({opacity: 1});
+
+      // Start the game
+      goToRoom(current_room);
+    }
+  }
+
+  // BOARD MODE
+  if(GAME_STATE === 'BOARD') {
+    switch(event.key) {
+      case "ArrowUp":
+      north.dispatch('click');
+      break;
+      case "ArrowDown":
+      south.dispatch('click');
+      break;
+      case "ArrowRight":
+      east.dispatch('click');
+      break;
+      case "ArrowLeft":
+      west.dispatch('click');
+      break;
     }
   }
 };
@@ -194,64 +250,56 @@ var keyHandler = function (event) {
 // Listen for keydown events
 document.addEventListener('keydown', keyHandler, false);
 
+// CONTROLLING MINIMAP
+var setMiniMap = function(room_num){
+
+  // Clear existing event handlers
+  north.off('click');
+  south.off('click');
+  east.off('click');
+  west.off('click')
+
+  switch(room_num) {
+    case 1:
+      north.click(() => goToRoom(2));
+      break;
+    case 2:
+      north.click(() => goToRoom(5));
+      south.click(() => goToRoom(1))
+      east.click(() => goToRoom(4));
+      west.click(() => goToRoom(3));
+      break;
+    case 3:
+      east.click(() => goToRoom(2));
+      break;
+    case 4:
+      west.click(() => goToRoom(2));
+      break;
+    case 5:
+      south.click(() => goToRoom(2))
+      break;
+    default:
+      debug("Invalid room number provided -- are you haXX0r??")
+  } 
+}
+
 // INTIAL LOAD
 /////////////////////////////////////////////////
 let init = function(){
   debug("Running init...")
-
-  var initial_request = new XMLHttpRequest();
-    initial_request.open('GET', 'assets/boards/BOARD1.svg');
-    initial_request.send(null);
-
-  initial_request.onreadystatechange = function () {
-      var DONE = 4; // readyState 4 means the request is done.
-      var OK = 200; // status 200 is a successful return.
-      if (initial_request.readyState === DONE) {
-        if (initial_request.status === OK) {
-              debug(initial_request.responseText);
-              board.svg(initial_request.responseText)
-              door1 = board.find("#north")
-              door1.on('click', room1_goNorth);
-        } else {
-          console.log('Error: ' + initial_request.status); // An error occurred during the request.
-        }
-      }
-    };
+  current_room = 1;
 }
 
-// ROOM 1
+// ROOM NAVIGATION
 /////////////////////////////////////////////////
+let goToRoom = function(room_num) {
+  // Remove existing scene from board
+  board.find("#SCENE").remove();
 
-// rename to room1_goWest
-let room1_goNorth = function() {
-    // Remove existing scene from board
-    board.find("#SCENE").remove()
-
-    // Fetch new scene
-    var new_request = new XMLHttpRequest();
-    new_request.open('GET', 'assets/boards/BOARD2.svg');
-    new_request.send(null);
-
-    // When scene is fetched, draw it to the page and attach new event handlers
-    new_request.onreadystatechange = function () {
-        var DONE = 4; // readyState 4 means the request is done.
-        var OK = 200; // status 200 is a successful return.
-        if (new_request.readyState === DONE) {
-          if (new_request.status === OK) {
-                  
-            debug(new_request.responseText);
-                  
-            scene = board.svg(new_request.responseText);
-            north = board.find("#north")
-            north.on('click', room1_goNorth);
-          } else {
-            console.log('Error: ' + new_request.status); // An error occurred during the request.
-          }
-        }
-    };
+  // Fetch new scene
+  current_room = room_num;
+  fetchScene(current_room);
+  setMiniMap(current_room);
 }
-
-// ROOM 2
-/////////////////////////////////////////////////
 
 init();
