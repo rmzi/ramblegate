@@ -52,7 +52,7 @@ const game_map = {
 // ToDo: No matter how text is defined, paginate properly
 
 // Page length = 3 lines
-const page_length = 3 
+const page_length = 3;
 
 const script = {
   1: {
@@ -98,17 +98,16 @@ const script = {
   0: {
     test: {
       title: "woo",
-      text: 
-        `Roses are Red,
+      text: `Roses are Red,
         Violets are Blue,
         Sugar is sweet,
         And so are you.
         The sex is amazing,
         Your body is blazing.
         I can't tell you how you've made me complete,
-        The world's been bereft, but now its replete`
-    }
-  }
+        The world's been bereft, but now its replete`,
+    },
+  },
 };
 
 // Initialize Game State
@@ -121,8 +120,8 @@ let game_state = {
   prompt: {
     title: "",
     text: "",
-    page: 0
-  }
+    page: 0,
+  },
 };
 
 // Cardinal Directions (for minimap)
@@ -220,15 +219,7 @@ function getCookie(cname) {
 
 // for legacy browsers
 const AudioContext = window.AudioContext || window.webkitAudioContext;
-
 const audioContext = new AudioContext();
-
-// get the audio element
-const audioElement = document.querySelector("audio");
-audioElement.loop = true;
-
-// pass it into the audio context
-const track = audioContext.createMediaElementSource(audioElement);
 
 // KONAMI CODE
 /////////////////////////////////////////////////
@@ -250,79 +241,41 @@ let current = 0;
 
 // OPENING SEQUENCE
 /////////////////////////////////////////////////
-function fadeInCompany() {
+
+// COMPANY SEQUENCE
+
+// SVG Selectors letters
+var D = company.find("#D");
+var A = company.find("#A");
+var T = company.find("#T");
+var B = company.find("#B");
+var O = company.find("#O");
+var Y = company.find("#Y");
+
+var fadeInCompany = function () {
   home.hide();
 
-  const companyAnimator = company
+  var companyAnimator = company
     .show()
     .animate({
-      duration: 1000,
+      duration: 1,
       when: "now",
       swing: "true",
       times: 1,
     })
     .attr({ opacity: 1 });
 
-  companyAnimator.after(fadeOutCompany);
-}
+  companyAnimator.after(fadeInLetters);
+};
 
-function fadeOutCompany() {
-  const companyAnimator = company
-    .animate({
-      duration: 1000,
-      delay: 1000,
-      when: "now",
-      swing: "true",
-      times: 1,
-    })
-    .attr({ opacity: 0 });
+function fadeInLetters() {
+  // get the audio element for the datboy audio
+  // TODO: reference this properly
+  const audioElement = document.querySelectorAll("audio")[1];
+  audioElement.loop = false;
 
-  companyAnimator.after(fadeInLegal);
-}
-
-function fadeInLegal() {
-  company.hide();
-
-  const legalAnimator = legal
-    .show()
-    .animate({
-      duration: 1000,
-      delay: 1000,
-      when: "now",
-      swing: "true",
-      times: 1,
-    })
-    .attr({ opacity: 1 });
-
-  legalAnimator.after(fadeOutLegal);
-}
-
-function fadeOutLegal() {
-  const legalAnimator = legal
-    .animate({
-      duration: 1000,
-      delay: 1000,
-      when: "now",
-      swing: "true",
-      times: 1,
-    })
-    .attr({ opacity: 0 });
-
-  legalAnimator.after(fadeInTitle);
-}
-
-function fadeInTitle() {
-  legal.hide();
-
-  const titleAnimator = title
-    .show()
-    .animate({
-      duration: 1000,
-      when: "now",
-      swing: "true",
-      times: 1,
-    })
-    .attr({ opacity: 1 });
+  // pass it into the audio context
+  const track = audioContext.createMediaElementSource(audioElement);
 
   // Connect <audio> to Web Audio API
   track.connect(audioContext.destination);
@@ -334,7 +287,325 @@ function fadeInTitle() {
 
   // Start intro music
   audioElement.play();
+
+  fadeInD();
+  colorD();
+  fadeInA();
+  colorA();
+  fadeInT();
+  colorT();
+  fadeInB();
+  colorB();
+  fadeInO();
+  colorO();
+  fadeInY();
+  colorY();
 }
+
+var fadeInD = function () {
+  var DAnimator = D.animate({
+    duration: 700,
+    when: "now",
+    swing: "true",
+    times: 1,
+  })
+    .attr({ opacity: 1 })
+    .move(100, 100)
+    .size(null, 200)
+    .animate({ duration: 700 })
+    .size(null, 90);
+};
+
+function colorD() {
+  D.animate({
+    duration: 200,
+    when: "now",
+    swing: "true",
+    times: 1,
+  })
+    .attr({ fill: "#4B0082" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#9400D3" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#ff0000" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#FF7F00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#FFFF00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#00FF00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#1400F6" });
+}
+
+var fadeInA = function () {
+  var AAnimator = A.animate({
+    duration: 700,
+    delay: 100,
+    when: "now",
+    swing: "true",
+    times: 1,
+  })
+    .attr({ opacity: 1 })
+    .move(100, 100)
+    .size(null, 200)
+    .animate({ duration: 700 })
+    .size(null, 90);
+};
+
+function colorA() {
+  A.animate({
+    duration: 200,
+    delay: 100,
+    when: "now",
+    swing: "true",
+    times: 1,
+  })
+    .attr({ fill: "#4B0082" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#9400D3" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#ff0000" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#FF7F00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#FFFF00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#00FF00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#1400F6" });
+}
+
+var fadeInT = function () {
+  var TAnimator = T.animate({
+    duration: 700,
+    delay: 200,
+    when: "now",
+    swing: "true",
+    times: 1,
+  })
+    .attr({ opacity: 1 })
+    .move(100, 100)
+    .size(null, 200)
+    .animate({ duration: 700 })
+    .size(null, 90);
+};
+
+function colorT() {
+  T.animate({
+    duration: 200,
+    delay: 200,
+    when: "now",
+    swing: "true",
+    times: 1,
+  })
+    .attr({ fill: "#4B0082" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#9400D3" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#ff0000" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#FF7F00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#FFFF00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#00FF00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#1400F6" });
+}
+
+var fadeInB = function () {
+  var BAnimator = B.animate({
+    duration: 700,
+    delay: 300,
+    when: "now",
+    swing: "true",
+    times: 1,
+  })
+    .attr({ opacity: 1 })
+    .move(100, 100)
+    .size(null, 200)
+    .animate({ duration: 700 })
+    .size(null, 90);
+};
+
+function colorB() {
+  B.animate({
+    duration: 200,
+    delay: 300,
+    when: "now",
+    swing: "true",
+    times: 1,
+  })
+    .attr({ fill: "#4B0082" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#9400D3" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#ff0000" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#FF7F00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#FFFF00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#00FF00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#1400F6" });
+}
+
+var fadeInO = function () {
+  var OAnimator = O.animate({
+    duration: 700,
+    delay: 400,
+    when: "now",
+    swing: "true",
+    times: 1,
+  })
+    .attr({ opacity: 1 })
+    .move(100, 100)
+    .size(null, 200)
+    .animate({ duration: 700 })
+    .size(null, 90);
+};
+
+function colorO() {
+  O.animate({
+    duration: 200,
+    delay: 400,
+    when: "now",
+    swing: "true",
+    times: 1,
+  })
+    .attr({ fill: "#4B0082" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#9400D3" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#ff0000" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#FF7F00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#FFFF00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#00FF00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#1400F6" });
+}
+
+var fadeInY = function () {
+  var YAnimator = Y.animate({
+    duration: 700,
+    delay: 500,
+    when: "now",
+    swing: "true",
+    times: 1,
+  })
+    .attr({ opacity: 1 })
+    .move(100, 100)
+    .size(null, 200)
+    .animate({ duration: 700 })
+    .size(null, 90);
+
+  YAnimator.after(fadeOutCompany);
+};
+
+function colorY() {
+  Y.animate({
+    duration: 200,
+    delay: 500,
+    when: "now",
+    swing: "true",
+    times: 1,
+  })
+    .attr({ fill: "#4B0082" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#9400D3" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#ff0000" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#FF7F00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#FFFF00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#00FF00" })
+    .animate({ duration: 200 })
+    .attr({ fill: "#1400F6" });
+}
+
+var fadeOutCompany = function () {
+  var companyAnimator = company
+    .animate({
+      duration: 1000,
+      delay: 2000,
+      when: "now",
+      swing: "true",
+      times: 1,
+    })
+    .attr({ opacity: 0 });
+
+  companyAnimator.after(fadeInLegal);
+};
+
+var fadeInLegal = function () {
+  company.hide();
+
+  var legalAnimator = legal
+    .show()
+    .animate({
+      duration: 1000,
+      when: "now",
+      swing: "true",
+      times: 1,
+    })
+    .attr({ opacity: 1 });
+
+  legalAnimator.after(fadeOutLegal);
+};
+
+var fadeOutLegal = function () {
+  var legalAnimator = legal
+    .animate({
+      duration: 1000,
+      delay: 1000,
+      when: "now",
+      swing: "true",
+      times: 1,
+    })
+    .attr({ opacity: 0 });
+
+  legalAnimator.after(fadeInTitle);
+};
+
+var fadeInTitle = function () {
+  legal.hide();
+
+  var titleAnimator = title
+    .show()
+    .animate({
+      duration: 1000,
+      when: "now",
+      swing: "true",
+      times: 1,
+    })
+    .attr({ opacity: 1 });
+
+  // get the audio element for the intro text
+  // TODO: reference this properly
+  const audioElement = document.querySelectorAll("audio")[0];
+  audioElement.loop = true;
+
+  // pass it into the audio context
+  const track = audioContext.createMediaElementSource(audioElement);
+
+  // Connect <audio> to Web Audio API
+  track.connect(audioContext.destination);
+
+  // check if context is in suspended state (autoplay policy)
+  if (audioContext.state === "suspended") {
+    audioContext.resume();
+  }
+
+  // Start intro music
+  audioElement.play();
+};
 
 // KEYBOARD INPUT
 /////////////////////////////////////////////////
@@ -342,6 +613,53 @@ function keyHandler(event) {
   // Choose proper handler codepath based on INPUT_MODE
   switch (INPUT_MODE) {
     case "HOME":
+      // 0 @ Home = TITLE
+      if (event.key === "0") {
+        // Changing game state to 'TITLE'
+        INPUT_MODE = "TITLE";
+
+        // Hide the homepage and transition to the board
+        var homeAnimator = home
+          .animate({
+            duration: 1000,
+            when: "now",
+            swing: "true",
+            times: 1,
+          })
+          .attr({ opacity: 0 });
+
+        homeAnimator.after(fadeInCompany);
+      }
+
+      // 1 @ Home = BOARD
+      if (event.key === "1") {
+        // Hide the homepage and transition to the board
+        var homeAnimator = home
+          .animate({
+            duration: 1000,
+            when: "now",
+            swing: "true",
+            times: 1,
+          })
+          .attr({ opacity: 0 });
+
+        INPUT_MODE = "BOARD";
+
+        board
+          .show()
+          .animate({
+            duration: 1000,
+            delay: 100,
+            when: "now",
+            swing: "true",
+            times: 1,
+          })
+          .attr({ opacity: 1 });
+
+        // Start the game
+        goToRoom(game_state.current_room);
+      }
+
       // If the key isn't in the pattern, or isn't the current key in the pattern, reset
       if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
         current = 0;
@@ -362,11 +680,20 @@ function keyHandler(event) {
         return;
       }
 
-      // Update how much of the pattern is complete
-      current++;
-
+       // Update how much of the pattern is complete
+       current++;
+      
       if (current <= pattern.length) {
-        SVG("#button" + current.toString()).fill({ color: "#f06" });
+        SVG("#button" + current.toString())
+          .animate({
+            duration: 300,
+            when: "now",
+            swing: "true",
+            times: 1,
+          })
+          .attr({ fill: "#00FF00" })
+          .animate({ duration: 100 })
+          .attr({ fill: "#0000FF" });
       }
 
       // If complete, move to the next screen
@@ -390,14 +717,12 @@ function keyHandler(event) {
         homeAnimator.after(fadeInCompany);
       }
       break;
+
     case "TITLE":
       if (event.key === "Enter") {
         debug(document.cookie);
 
         title.hide();
-
-        // Show the overlay to allow prompter to be set when game starts
-        overlay.show();
 
         // Change INPUT_MODE to board
         INPUT_MODE = "BOARD";
@@ -412,7 +737,7 @@ function keyHandler(event) {
             times: 1,
           })
           .attr({ opacity: 1 });
- 
+
         // Fetch current_room from cookies
         if (getCookie("current_room") != "") {
           game_state.current_room = getCookie("current_room");
@@ -425,12 +750,15 @@ function keyHandler(event) {
 
         // Start the game
         goToRoom(game_state.current_room);
-
-      } else if(event.key === "0") {
-        if(confirm("Clear your save state? (All of your saved progress will be gone. For real, for real).")){
+      } else if (event.key === "0") {
+        if (
+          confirm(
+            "Clear your save state? (All of your saved progress will be gone. For real, for real)."
+          )
+        ) {
           setCookie("visited", JSON.stringify([]), 10);
           setCookie("current_room", 1, 10);
-          debug("Clearing game state")
+          debug("Clearing game state");
         }
       }
       break;
@@ -449,11 +777,7 @@ function keyHandler(event) {
           west.dispatch("click");
           break;
         case "0":
-          prompt(
-            script[0].test.title,
-            script[0].test.text,
-            0
-          );
+          prompt(script[0].test.title, script[0].test.text, 0);
           INPUT_MODE = "PROMPT";
       }
       break;
@@ -519,12 +843,15 @@ function prompt(title, text, page) {
   game_state.prompt = {
     title: title,
     text: text,
-    page: page
-  }
+    page: page,
+  };
 
   // Get only the text for this page
-  const prompter_text = game_state.prompt.text.split('\n').slice(page * page_length,page * page_length + page_length).join('\n');
-  debug(prompter_text)
+  const prompter_text = game_state.prompt.text
+    .split("\n")
+    .slice(page * page_length, page * page_length + page_length)
+    .join("\n");
+  debug(prompter_text);
 
   prompter.find("#prompt_title").text(title);
   prompter.find("#prompt_text").text(prompter_text);
@@ -532,10 +859,13 @@ function prompt(title, text, page) {
 
 function progressPrompt() {
   // Turn the page
-  game_state.prompt.page++
+  game_state.prompt.page++;
 
   // If on the last page
-  if(game_state.prompt.page * page_length > game_state.prompt.text.split('\n').length){
+  if (
+    game_state.prompt.page * page_length >
+    game_state.prompt.text.split("\n").length
+  ) {
     // Exit the prompter
     INPUT_MODE = "BOARD";
     prompter.hide();
