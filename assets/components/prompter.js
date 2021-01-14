@@ -2,7 +2,7 @@
 const page_length = 3;
 
 // PROMPT MANAGEMENT
-function prompt(title, text, page) {
+function promptUser(title, text, page) {
   overlay.show();
   prompter.show();
 
@@ -39,7 +39,7 @@ function progressPrompt() {
     overlay.hide();
   } else {
     // Prompt the next page
-    prompt(
+    promptUser(
       game_state.prompt.title,
       game_state.prompt.text,
       game_state.prompt.page

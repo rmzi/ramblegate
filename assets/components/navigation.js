@@ -63,7 +63,7 @@ function goToRoom(room_num) {
     game_state.visited.push(game_state.current_room.toString());
     INPUT_MODE = "PROMPT";
 
-    prompt(
+    promptUser(
       script[game_state.current_room].entry.title,
       script[game_state.current_room].entry.text,
       0

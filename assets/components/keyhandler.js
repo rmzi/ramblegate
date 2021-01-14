@@ -16,12 +16,27 @@ const pattern = [
 // Current index of Konami Code
 let current = 0;
 
+let konami_started = false;
+
 // KEYBOARD INPUT
 /////////////////////////////////////////////////
 function keyHandler(event) {
   // Choose proper handler codepath based on INPUT_MODE
   switch (INPUT_MODE) {
     case "HOME":
+
+      if(!konami_started){
+        konami.show().animate({
+          duration: 1000,
+          when: "now",
+          swing: "true",
+          times: 1,
+        }).attr({opacity: 1});
+
+        konami_started = true;
+        return; 
+      }
+
       // 0 @ Home = TITLE
       if (event.key === "0") {
         // Changing game state to 'TITLE'
@@ -79,10 +94,10 @@ function keyHandler(event) {
           SVG("#button" + i.toString()).fill({ color: "#ff0000" });
         }
 
-        // Half a second later, go back to black
+        // Half a second later, go back to white
         setTimeout(() => {
           for (i = 1; i <= 10; i++) {
-            SVG("#button" + i.toString()).fill({ color: "#000000" });
+            SVG("#button" + i.toString()).fill({ color: "#FFFFFF" });
           }
         }, 500);
 
@@ -128,7 +143,7 @@ function keyHandler(event) {
       break;
 
     case "TITLE":
-      if (event.key === "Enter") {
+      if (event.key === " ") {
         debug(document.cookie);
 
         title.hide();
@@ -186,7 +201,7 @@ function keyHandler(event) {
           west.dispatch("click");
           break;
         case "0":
-          prompt(script[0].test.title, script[0].test.text, 0);
+          promptUser(script[0].test.title, script[0].test.text, 0);
           INPUT_MODE = "PROMPT";
       }
       break;

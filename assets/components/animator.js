@@ -10,8 +10,61 @@ const legal = draw.find(".legal");
 const company = draw.find(".company");
 const prompter = draw.find("#prompt");
 
+// HOME
+const konami = draw.find(".konami");
+
 // OPENING SEQUENCE
 /////////////////////////////////////////////////
+
+// HOME ANIMATIONS
+const hand = home.find(".hand")
+fadeHand();
+scaleHand();
+
+const glow = home.find("#path-3")
+scaleGlow();
+
+const glow2 = home.find("#path-5")
+scaleGlow2();
+
+function fadeHand() {
+  const hand_animator = hand.animate({
+    duration: 2000,
+    when: "now",
+    swing: "false",
+    times: 100,
+  }).attr({opacity: .7})
+}
+
+function scaleHand() {
+  const hand_animator = hand.animate({
+    duration: 2000,
+    when: "now",
+    swing: "false",
+    times: 100,
+  }).scale(.90)
+}
+
+function scaleGlow() {
+  const glow_animator = glow.animate({
+    duration: 3000,
+    ease: ">",
+    when: "now",
+    swing: "true",
+    times: 100,
+  }).size(420,240).move(430,244)
+}
+
+function scaleGlow2() {
+  const glow_animator = glow2.animate({
+    duration: 3000,
+    delay: 1500,
+    ease: ">",
+    when: "now",
+    swing: "true",
+    times: 100,
+  }).size(420,240).move(430,244)
+}
 
 // COMPANY SEQUENCE
 
@@ -22,6 +75,8 @@ var T = company.find("#T");
 var B = company.find("#B");
 var O = company.find("#O");
 var Y = company.find("#Y");
+
+const all_letters = [D, A, T, B, O, Y];
 
 var fadeInCompany = function () {
   home.hide();
@@ -59,233 +114,45 @@ function fadeInLetters() {
   // Start intro music
   audioElement.play();
 
-  fadeInD();
-  colorD();
-  fadeInA();
-  colorA();
-  fadeInT();
-  colorT();
-  fadeInB();
-  colorB();
-  fadeInO();
-  colorO();
-  fadeInY();
-  colorY();
+  // Iterate through all letters and fadeIn / colorCycle
+  for (let i = 0; i < all_letters.length; i++){
+    fadeInLetter(i);
+    colorCycleLetter(i)
+  }
 }
 
-var fadeInD = function () {
-  var DAnimator = D.animate({
-    duration: 700,
-    when: "now",
-    swing: "true",
-    times: 1,
-  })
-    .attr({ opacity: 1 })
-    .move(100, 100)
-    .size(null, 200)
-    .animate({ duration: 700 })
-    .size(null, 90);
-};
+function fadeInLetter(index) {
+  console.log(all_letters[index][0][0])
 
-function colorD() {
-  D.animate({
-    duration: 200,
-    when: "now",
-    swing: "true",
-    times: 1,
-  })
-    .attr({ fill: "#4B0082" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#9400D3" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#ff0000" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#FF7F00" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#FFFF00" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#00FF00" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#1400F6" });
-}
-
-var fadeInA = function () {
-  var AAnimator = A.animate({
-    duration: 700,
-    delay: 100,
-    when: "now",
-    swing: "true",
-    times: 1,
-  })
-    .attr({ opacity: 1 })
-    .move(100, 100)
-    .size(null, 200)
-    .animate({ duration: 700 })
-    .size(null, 90);
-};
-
-function colorA() {
-  A.animate({
-    duration: 200,
-    delay: 100,
-    when: "now",
-    swing: "true",
-    times: 1,
-  })
-    .attr({ fill: "#4B0082" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#9400D3" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#ff0000" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#FF7F00" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#FFFF00" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#00FF00" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#1400F6" });
-}
-
-var fadeInT = function () {
-  var TAnimator = T.animate({
-    duration: 700,
-    delay: 200,
-    when: "now",
-    swing: "true",
-    times: 1,
-  })
-    .attr({ opacity: 1 })
-    .move(100, 100)
-    .size(null, 200)
-    .animate({ duration: 700 })
-    .size(null, 90);
-};
-
-function colorT() {
-  T.animate({
-    duration: 200,
-    delay: 200,
-    when: "now",
-    swing: "true",
-    times: 1,
-  })
-    .attr({ fill: "#4B0082" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#9400D3" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#ff0000" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#FF7F00" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#FFFF00" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#00FF00" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#1400F6" });
-}
-
-var fadeInB = function () {
-  var BAnimator = B.animate({
-    duration: 700,
-    delay: 300,
-    when: "now",
-    swing: "true",
-    times: 1,
-  })
-    .attr({ opacity: 1 })
-    .move(100, 100)
-    .size(null, 200)
-    .animate({ duration: 700 })
-    .size(null, 90);
-};
-
-function colorB() {
-  B.animate({
-    duration: 200,
-    delay: 300,
-    when: "now",
-    swing: "true",
-    times: 1,
-  })
-    .attr({ fill: "#4B0082" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#9400D3" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#ff0000" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#FF7F00" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#FFFF00" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#00FF00" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#1400F6" });
-}
-
-var fadeInO = function () {
-  var OAnimator = O.animate({
-    duration: 700,
-    delay: 400,
-    when: "now",
-    swing: "true",
-    times: 1,
-  })
-    .attr({ opacity: 1 })
-    .move(100, 100)
-    .size(null, 200)
-    .animate({ duration: 700 })
-    .size(null, 90);
-};
-
-function colorO() {
-  O.animate({
-    duration: 200,
-    delay: 400,
-    when: "now",
-    swing: "true",
-    times: 1,
-  })
-    .attr({ fill: "#4B0082" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#9400D3" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#ff0000" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#FF7F00" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#FFFF00" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#00FF00" })
-    .animate({ duration: 200 })
-    .attr({ fill: "#1400F6" });
-}
-
-var fadeInY = function () {
-  var YAnimator = Y.animate({
-    duration: 700,
-    delay: 500,
-    when: "now",
-    swing: "true",
-    times: 1,
-  })
+  const letterAnimator = all_letters[index][0][0]
+    .animate({
+      duration: 700,
+      delay: index * 100,
+      when: "now",
+      swing: "true",
+      times: 1,
+    })
     .attr({ opacity: 1 })
     .move(100, 100)
     .size(null, 200)
     .animate({ duration: 700 })
     .size(null, 90);
 
-  YAnimator.after(fadeOutCompany);
-};
+  // If on the last letter, fade out the company SVG
+  if(index === all_letters.length - 1){
+    letterAnimator.after(fadeOutCompany)
+  }
+}
 
-function colorY() {
-  Y.animate({
-    duration: 200,
-    delay: 500,
-    when: "now",
-    swing: "true",
-    times: 1,
-  })
+function colorCycleLetter(index) {
+  all_letters[index][0][0]
+    .animate({
+      duration: 200,
+      delay: index * 100,
+      when: "now",
+      swing: "true",
+      times: 1,
+    })
     .attr({ fill: "#4B0082" })
     .animate({ duration: 200 })
     .attr({ fill: "#9400D3" })
@@ -352,6 +219,7 @@ var fadeInTitle = function () {
     .show()
     .animate({
       duration: 1000,
+      delay: 1000,
       when: "now",
       swing: "true",
       times: 1,
@@ -359,7 +227,7 @@ var fadeInTitle = function () {
     .attr({ opacity: 1 });
 
   // get the audio element for the intro text
-  // TODO: wrap this in a function and put in audio 
+  // TODO: wrap this in a function and put in audio
   const audioElement = document.querySelectorAll("audio")[0];
   audioElement.loop = true;
 

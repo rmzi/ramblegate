@@ -25,6 +25,7 @@ function init() {
   legal.hide();
   company.hide();
   prompter.hide();
+  konami.hide();
 
   // Listen for keydown events
   document.addEventListener("keydown", keyHandler, false);
