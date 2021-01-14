@@ -1,5 +1,6 @@
 body, html {
   cursor: pointer;
+  overflow: hidden; /* Hide scrollbars */
 }
 
 /* FONTS */

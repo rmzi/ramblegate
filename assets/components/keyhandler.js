@@ -1,6 +1,6 @@
 // KONAMI CODE
 /////////////////////////////////////////////////
-const pattern = [
+let pattern = [
   "ArrowUp",
   "ArrowUp",
   "ArrowDown",
@@ -15,8 +15,19 @@ const pattern = [
 
 // Current index of Konami Code
 let current = 0;
-
 let konami_started = false;
+
+
+function showKonami(){
+  konami.show().animate({
+    duration: 1000,
+    when: "now",
+    swing: "true",
+    times: 1,
+  }).attr({opacity: 1});
+
+  konami_started = true;
+}
 
 // KEYBOARD INPUT
 /////////////////////////////////////////////////
@@ -26,14 +37,7 @@ function keyHandler(event) {
     case "HOME":
 
       if(!konami_started){
-        konami.show().animate({
-          duration: 1000,
-          when: "now",
-          swing: "true",
-          times: 1,
-        }).attr({opacity: 1});
-
-        konami_started = true;
+        showKonami();
         return; 
       }
 
