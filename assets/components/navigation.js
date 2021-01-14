@@ -12,7 +12,7 @@ const directions = {
 };
 
 // Load a scene on the board
-function fetchScene(scene_num){
+function fetchScene(scene_num) {
   let request = new XMLHttpRequest();
   request.open("GET", "assets/boards/BOARD" + scene_num + ".svg");
   request.send(null);
@@ -25,15 +25,22 @@ function fetchScene(scene_num){
         // Debug: dump scene payload
         debug(request.responseText);
 
-        // Draw scene to the board
-        board.svg(request.responseText);
+        // First member is proper list?
+        let old_scenes = scene.children()
+
+        if(!isEmpty(old_scenes[0])) {
+          old_scenes[0].remove();
+        }
+
+        // Draw fetched scene to board and add to game state
+        scene.svg(request.responseText);
       } else {
         // An error occurred during the request.
         console.log("Error: " + request.status);
       }
     }
   };
-};
+}
 
 // CONTROLLING MINIMAP
 function setMiniMap(room_num) {

@@ -11,6 +11,10 @@ function debug(text) {
   }
 }
 
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
+}
+
 // INTIAL LOAD
 /////////////////////////////////////////////////
 function init() {

@@ -3,12 +3,14 @@ const draw = SVG(".svg_container");
 
 // SVG Selectors for all layers
 const board = draw.find(".board");
+const scene = draw.find("#scene")
 const home = draw.find(".home");
 const overlay = draw.find(".overlay");
 const title = draw.find(".title");
 const legal = draw.find(".legal");
 const company = draw.find(".company");
 const prompter = draw.find("#prompt");
+const sidebar = draw.find("#sidebar")
 
 // HOME
 const konami = draw.find(".konami");
@@ -32,7 +34,7 @@ function fadeHand() {
     duration: 2000,
     when: "now",
     swing: "false",
-    times: 100,
+    times: 10,
   }).attr({opacity: .7})
 }
 
