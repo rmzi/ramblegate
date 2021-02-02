@@ -10,8 +10,16 @@ let game_state = {
     text: "",
     page: 0,
   },
+  inventory: []
 };
-
 
 // Initialize INPUT_MODE to `home`
 let INPUT_MODE = "HOME";
+
+function saveGameState(){
+  //
+}
+
+function loadGameState(){
+  //
+}

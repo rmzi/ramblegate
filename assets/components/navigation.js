@@ -64,6 +64,7 @@ function goToRoom(room_num) {
   game_state.current_room = room_num;
   fetchScene(game_state.current_room);
   setMiniMap(game_state.current_room);
+  setInteractions(game_state.current_room);
 
   // If it's the first time going to this room, show prompt
   if (game_state.visited.indexOf(game_state.current_room.toString()) === -1) {

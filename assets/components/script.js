@@ -11,33 +11,33 @@ const script = {
       title: "Enter: Ramblegate",
       // Example of a multi-line string using ``
       text: `Ramblegate is a game of power, not succinct in any way. 
-        It teaches us patience with ourselves and the world... 
-        Join us on this quest to conquer life itself!!
-        You will be challenged in many ways,
-        most of them focused on testing your intellect,
-        courage and strength.
-        Can you succeed in besting RAMBLEGATE?!`,
+      It teaches us patience with ourselves and the world... 
+      Join us on this quest to conquer life itself!!
+      You will be challenged in many ways,
+      most of them focused on testing your intellect,
+      courage and strength.
+      Can you succeed in besting RAMBLEGATE?!`,
     },
   },
   2: {
     entry: {
       title: "Choices",
       text:
-        "You are presented with a choice of three doors. Which one will you choose?",
+        "You are presented with a choice of three doors...",
     },
   },
   3: {
     entry: {
       title: "Green",
       text:
-        "This room makes you feel... somehow angry... wanting of material things...",
+        "This room makes you feel somehow angry, wanting of material things...",
     },
   },
   4: {
     entry: {
       title: "Blue",
       text:
-        "This room make you feel calm... but also a bit sad... longing for the sea...",
+        "This room make you feel calm, but also a bit sad, longing for the sea...",
     },
   },
   5: {
